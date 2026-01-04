@@ -1,0 +1,37 @@
+使用说明：
+准备工作：
+确保项目中已导入Photon PUN2包
+（可选）如果你要使用TextMeshPro，请先导入TextMeshPro包
+安装脚本：
+在项目中创建一个名为Editor的文件夹
+将上述脚本保存为ChatPanelAutoCreator.cs放在Editor文件夹中
+使用方法：
+在Unity编辑器中，点击顶部菜单：GameObject > UI > Create Chat Panel
+在弹出的窗口中，可以配置：
+Chat Manager Name：ChatManager对象的名称（默认为"ChatManager"）
+Use TextMeshPro：是否使用TextMeshPro（需要先导入TMP包）
+Create Notification Panel：是否创建顶部通知面板
+点击"Create Chat Panel"按钮
+脚本功能：
+自动检查并创建Canvas和EventSystem（如果不存在）
+创建或查找ChatManager对象并添加必要组件（包括PhotonView）
+生成完整的聊天UI界面，包括：
+聊天主面板（默认隐藏）
+滚动消息区域
+消息输入框
+发送按钮
+标题栏和关闭按钮
+（可选）顶部通知面板
+创建消息预制体并保存为资源
+自动绑定所有UI元素到ChatManager组件
+配置适当的布局和样式
+使用生成的聊天系统：
+按Tab键可以切换聊天面板显示/隐藏
+在输入框中输入消息后按Enter或点击发送按钮发送
+当收到其他玩家消息时，顶部会显示通知（如果启用了通知面板）
+玩家加入/离开房间时会自动显示系统消息
+自定义：
+你可以轻松修改生成的UI元素的外观
+在ChatManager组件中调整设置（颜色、持续时间等）
+聊天面板默认在屏幕底部，你可以调整RectTransform来改变位置
+这个脚本会处理所有繁琐的UI创建和绑定工作，让你只需点击几下就能获得一个功能完整的多人聊天系统。生成的UI是响应式的，会适应不同屏幕尺寸，并且已经配置了适当的锚点和布局。

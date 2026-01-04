@@ -1,0 +1,223 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4382028358793957050
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7892013518566618394, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_Name
+      value: CroakusTheGreat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618397, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892013518566618398, guid: 422da45f745a3a14ab9b98171edaa17e,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 7474852289364725666}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 422da45f745a3a14ab9b98171edaa17e, type: 3}
+--- !u!4 &3670181823441671796 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1026554079424026830, guid: 422da45f745a3a14ab9b98171edaa17e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4382028358793957050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5860880658236472224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7892013518566618394, guid: 422da45f745a3a14ab9b98171edaa17e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4382028358793957050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8722540559978892841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860880658236472224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7e1a2522e844528930891d8c1cfe24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterType: 0
+  _movement: {fileID: 5860880658236472251}
+  _characterAnimator: {fileID: 5860880658236472228}
+--- !u!114 &5860880658236472228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7892013518566618398, guid: 422da45f745a3a14ab9b98171edaa17e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4382028358793957050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860880658236472224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0069cff95aa343918367dacd31b1cdd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5860880658236472251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7892013518566618369, guid: 422da45f745a3a14ab9b98171edaa17e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4382028358793957050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860880658236472224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc661d90b5141fdbe4c4a5ec2431aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &8344750073625463755
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3670181823441671796}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 110d1a91da12ea441a76ab10772174fb,
+        type: 3}
+      propertyPath: m_Name
+      value: Croakus_The_Great
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 110d1a91da12ea441a76ab10772174fb, type: 3}
+--- !u!1 &9155791839416120986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 110d1a91da12ea441a76ab10772174fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 8344750073625463755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7474852289364725666
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9155791839416120986}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da92d4741ba0e924f82b21d6ca1b6584, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
