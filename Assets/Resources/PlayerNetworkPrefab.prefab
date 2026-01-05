@@ -6354,6 +6354,11 @@ GameObject:
   - component: {fileID: 7585709084449571387}
   - component: {fileID: 3197326167182104605}
   - component: {fileID: 5644676181882040807}
+  - component: {fileID: -2731769316746116610}
+  - component: {fileID: -8698079830197798269}
+  - component: {fileID: 3149621342620255330}
+  - component: {fileID: 4759473722772613856}
+  - component: {fileID: 6301346404011925876}
   m_Layer: 3
   m_Name: PlayerNetworkPrefab
   m_TagString: Player
@@ -6507,7 +6512,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2654221057017437895}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4d0f171e77713044812739c2acd01c5, type: 3}
   m_Name: 
@@ -6765,6 +6770,12 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Jump
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsFrozen
+  - Type: 9
+    SynchronizeType: 1
+    Name: CastSkill
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -6900,6 +6911,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b229a3951d4cb41a78b0edc349b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2731769316746116610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654221057017437895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ff5b08560f01f4a9a230a9085ab1fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 1870026716222036042}
+  damping: 6
+--- !u!114 &-8698079830197798269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654221057017437895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f17d9999e10244692bf168f376a305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 3546424111472169926}
+--- !u!114 &3149621342620255330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654221057017437895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e079073886623b34c94c18b043f98f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castKey: 101
+  orbPrefabName: Sand Shield
+  castOrigin: {fileID: 3666043748959158249}
+  spawnForward: 1.2
+  spawnUp: 0.2
+  cooldown: 10
+--- !u!114 &4759473722772613856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654221057017437895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a20c33d78f81d4aabdcdccef3371a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  animator: {fileID: 0}
+  frozenBoolName: IsFrozen
+  enableBlueTint: 1
+  frozenTint: {r: 0.35, g: 0.75, b: 1, a: 1}
+  targetRenderers: []
+  extraDisable: []
+--- !u!114 &6301346404011925876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654221057017437895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784e96f78afae9b4197fecba80cf35ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3630892147516596550}
+  castTriggerName: CastSkill
 --- !u!1 &2659132975446241853
 GameObject:
   m_ObjectHideFlags: 0

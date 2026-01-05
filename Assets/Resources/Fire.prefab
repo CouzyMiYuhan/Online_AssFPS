@@ -6804,6 +6804,11 @@ GameObject:
   - component: {fileID: 5256024107286817131}
   - component: {fileID: -2307542778995826445}
   - component: {fileID: 4266496890387080935}
+  - component: {fileID: -3112537128003841271}
+  - component: {fileID: 8139419640775281475}
+  - component: {fileID: -6888402939644391568}
+  - component: {fileID: -1667530319136846089}
+  - component: {fileID: 7307957166852931645}
   m_Layer: 3
   m_Name: Fire
   m_TagString: Player
@@ -7125,6 +7130,12 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Jump
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsFrozen
+  - Type: 9
+    SynchronizeType: 1
+    Name: CastSkill
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -7156,6 +7167,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b229a3951d4cb41a78b0edc349b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3112537128003841271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578975492758509536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ff5b08560f01f4a9a230a9085ab1fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
+  damping: 6
+--- !u!114 &8139419640775281475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578975492758509536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99e93bf28abe464e9f2870c9d0e56c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castKey: 101
+  tornadoPrefabName: Fire Tornado
+  castOrigin: {fileID: 0}
+  spawnForward: 1.2
+  spawnUp: 0.2
+  cooldown: 10
+--- !u!114 &-6888402939644391568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578975492758509536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f17d9999e10244692bf168f376a305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1910806063369736461}
+--- !u!114 &-1667530319136846089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578975492758509536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a20c33d78f81d4aabdcdccef3371a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  animator: {fileID: 0}
+  frozenBoolName: IsFrozen
+  enableBlueTint: 1
+  frozenTint: {r: 0.35, g: 0.75, b: 1, a: 1}
+  targetRenderers: []
+  extraDisable: []
+--- !u!114 &7307957166852931645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578975492758509536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784e96f78afae9b4197fecba80cf35ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3394493945225500758}
+  castTriggerName: CastSkill
 --- !u!1 &2590542141261200269
 GameObject:
   m_ObjectHideFlags: 0
