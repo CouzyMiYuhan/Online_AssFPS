@@ -6505,6 +6505,8 @@ MonoBehaviour:
   jumpBuffer: 0.1
   allowAttack: 0
   attackMouseButton: 0
+  isClimbing: 0
+  climbExitKey: 306
 --- !u!114 &3459380166480602114
 MonoBehaviour:
   m_ObjectHideFlags: 0

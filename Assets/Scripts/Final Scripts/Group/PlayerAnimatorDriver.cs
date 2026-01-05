@@ -32,4 +32,20 @@ public class PlayerAnimatorDriver : MonoBehaviour
     {
         anim.SetTrigger(jumpTriggerParam);
     }
+
+    public void StartClimbing()
+    {
+        anim.SetBool("Climb", true);
+    }
+
+    public void SetClimbingSpeed(float speed)
+    {
+        anim.speed = speed;
+    }
+
+    public void LeaveClimb()
+    {
+        anim.SetBool("Climb", false);
+        anim.speed = 1f;
+    }
 }

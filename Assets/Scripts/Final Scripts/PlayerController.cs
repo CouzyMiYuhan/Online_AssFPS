@@ -49,6 +49,14 @@ public class PlayerController : MonoBehaviour
     public bool allowAttack = false;
     public int attackMouseButton = 0;               // 0 = 左键
 
+    [Header("Climbing")]
+    public bool isClimbing = false;
+    private float climbSpeed = 2.0f;
+    public KeyCode climbExitKey = KeyCode.LeftControl; // 退出梯子按键
+    private Ladder currentLadder;
+    private bool canClimb = false;
+    private Vector3 ladderTopPosition;
+
     private CharacterController cc;
 
     // 当前水平速度（用于加速度平滑）
@@ -90,10 +98,62 @@ public class PlayerController : MonoBehaviour
         if (animDriver == null) animDriver = GetComponentInChildren<PlayerAnimatorDriver>();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (!isLocal) return;
+
+        if (other.CompareTag("Ladder"))
+        {
+            Debug.Log("Entered Ladder Trigger");
+            currentLadder = other.GetComponent<Ladder>();
+            canClimb = true;
+
+            // 获取梯子顶部位置（假设梯子对象有 Ladder 组件）
+            Ladder ladder = other.GetComponent<Ladder>();
+            if (ladder != null)
+            {
+                ladderTopPosition = ladder.GetTopPosition();
+            }
+
+            StartClimbing();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (!isLocal) return;
+
+        if (other == currentLadder)
+        {
+            Debug.Log("Exited Ladder Trigger");
+            canClimb = false;
+            currentLadder = null;
+            if (isClimbing)
+            {
+                StopClimbing();
+            }
+        }
+    }
+
     void Update()
     {
         if (!isLocal) return;
         if (cam == null) return;
+
+        // ====== Climbing Logic (提前处理) ======
+        HandleClimbing();
+
+        // 如果正在爬梯子，跳过常规移动、跳跃和旋转逻辑
+        if (isClimbing)
+        {
+            // 可选：更新动画参数
+            float verticalInput = Input.GetAxisRaw("Vertical");
+            if (animDriver != null)
+            {
+                animDriver.SetMoveSpeed(Mathf.Abs(verticalInput)); // 使用垂直输入作为移动速度
+            }
+            return; // 跳过剩下的常规移动逻辑
+        }
 
         // ====== Input ======
         float h = Input.GetAxisRaw("Horizontal");
@@ -182,5 +242,91 @@ public class PlayerController : MonoBehaviour
         // ====== Animator: MoveSpeed ======
         if (animDriver != null)
             animDriver.SetMoveSpeed(inputMag);
+    }
+
+    void HandleClimbing()
+    {
+        if (!isClimbing) return;
+
+        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+
+        Vector3 move = Vector3.up * v * climbSpeed * Time.deltaTime;
+
+        transform.position += move;
+
+        // 到达顶部
+        if (transform.position.y >= ladderTopPosition.y)
+        {
+            transform.position = new Vector3(
+                transform.position.x,
+                ladderTopPosition.y,
+                transform.position.z
+            );
+            StopClimbing();
+        }
+
+        if (animDriver != null)
+            animDriver.SetClimbingSpeed(Mathf.Abs(v));
+    }
+
+    void StartClimbing()
+    {
+        isClimbing = true;
+
+        planarVelocity = Vector3.zero;
+        verticalVelocity = 0f;
+
+        // 🔴 关键：冻结 CharacterController
+        cc.enabled = false;
+
+        // 对齐到梯子中心
+        //if (currentLadder != null)
+        //{
+        //    Vector3 center = currentLadder.bounds.center;
+        //    transform.position = new Vector3(
+        //        center.x,
+        //        transform.position.y,
+        //        center.z
+        //    );
+        //}
+
+        if (currentLadder != null)
+        {
+            if (currentLadder.startPos != null)
+            {
+                transform.position = currentLadder.startPos.position;
+                transform.rotation = currentLadder.startPos.rotation;
+            }
+        }
+
+        if (animDriver != null)
+            animDriver.StartClimbing();
+    }
+
+
+    void StopClimbing()
+    {
+        isClimbing = false;
+        canClimb = false;
+
+        // ⚠️ 先恢复 CC，再给一个轻微下压
+        cc.enabled = true;
+
+        // 防止重新启用 CC 时弹飞 / 穿地
+        cc.Move(Vector3.down * 0.1f);
+
+        if (animDriver != null)
+            animDriver.LeaveClimb();
+
+        if (currentLadder != null)
+        {
+            if (currentLadder.endPos != null)
+            {
+                transform.position = currentLadder.endPos.position;
+                transform.rotation = currentLadder.endPos.rotation;
+            }
+        }
+        currentLadder = null;
     }
 }
