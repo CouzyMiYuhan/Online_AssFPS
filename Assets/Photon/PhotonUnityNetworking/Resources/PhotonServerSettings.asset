@@ -44,6 +44,18 @@ MonoBehaviour:
   - RPC_TakeDamage
   - RpcSetGameResult
   - ReceiveMessage
+  - RPC_ApplyFreeze
+  - RPC_ApplyKnockback
+  - RPC_ApplySlow
+  - RPC_ApplySpeedBoost
+  - RPC_PlaySpeedTrail
+  - RPC_ShowRayLine
+  - RPC_Knockback
+  - RPC_PlayTrail
+  - RPC_Freeze
+  - RPC_SetFrozenTint
+  - RPC_SetFrozenAnim
+  - RPC_PlayCast
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

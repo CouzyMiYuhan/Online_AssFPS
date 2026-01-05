@@ -8851,6 +8851,11 @@ GameObject:
   - component: {fileID: -4986098503550562986}
   - component: {fileID: -7408491236127323853}
   - component: {fileID: -5550542676482663687}
+  - component: {fileID: 6697401985963596827}
+  - component: {fileID: 3832225190803416200}
+  - component: {fileID: 6579684513543694951}
+  - component: {fileID: -1233242880888317155}
+  - component: {fileID: 243387715031481620}
   m_Layer: 3
   m_Name: lightling
   m_TagString: Player
@@ -9172,6 +9177,12 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: Jump
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsFrozen
+  - Type: 9
+    SynchronizeType: 0
+    Name: CastSkill
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -9203,6 +9214,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b229a3951d4cb41a78b0edc349b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6697401985963596827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753980314065025543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ff5b08560f01f4a9a230a9085ab1fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
+  damping: 6
+--- !u!114 &3832225190803416200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753980314065025543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5cfcbebc3fba0342be9731a29d433ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castKey: 101
+  controller: {fileID: -1640994841481718755}
+  boostMultiplier: 1.6
+  duration: 5
+  cooldown: 10
+  trailVfxPrefab: {fileID: 1255672179292069195, guid: e8b47682bca116c4399347a07ba65598,
+    type: 3}
+  vfxAttach: {fileID: 0}
+  vfxLocalPos: {x: 0, y: 0.9, z: -0.6}
+  vfxLocalEuler: {x: 0, y: 0, z: 0}
+--- !u!114 &6579684513543694951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753980314065025543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f17d9999e10244692bf168f376a305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: -1640994841481718755}
+--- !u!114 &-1233242880888317155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753980314065025543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a20c33d78f81d4aabdcdccef3371a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  animator: {fileID: 0}
+  frozenBoolName: IsFrozen
+  enableBlueTint: 1
+  frozenTint: {r: 0.35, g: 0.75, b: 1, a: 1}
+  targetRenderers: []
+  extraDisable: []
+--- !u!114 &243387715031481620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753980314065025543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784e96f78afae9b4197fecba80cf35ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7211568508400261726}
+  castTriggerName: CastSkill
 --- !u!1 &3777859526927744848
 GameObject:
   m_ObjectHideFlags: 0
