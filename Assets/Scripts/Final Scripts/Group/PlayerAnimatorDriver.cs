@@ -48,4 +48,9 @@ public class PlayerAnimatorDriver : MonoBehaviour
         anim.SetBool("Climb", false);
         anim.speed = 1f;
     }
+
+    public void Finish()
+    {
+        anim.SetTrigger("Finish");
+    }
 }

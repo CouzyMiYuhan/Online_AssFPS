@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
             LevelManager levelManager = FindObjectOfType<LevelManager>();
             if (levelManager != null)
             {
+                animDriver.Finish(); // 播放完成动画
                 canMove = false; // 禁止移动
 
                 // 通过RPC通知所有客户端该玩家完成
