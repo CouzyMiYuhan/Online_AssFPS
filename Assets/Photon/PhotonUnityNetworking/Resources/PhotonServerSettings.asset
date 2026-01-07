@@ -56,6 +56,26 @@ MonoBehaviour:
   - RPC_SetFrozenTint
   - RPC_SetFrozenAnim
   - RPC_PlayCast
+  - StartGame
+  - UpdateCountdownUI
+  - UpdateGameTimeUI
+  - DisableMovement
+  - EnableMovement
+  - SyncGameTime
+  - StartCountdown
+  - RPC_StartCountdownWithTime
+  - RPC_SyncGameTime
+  - RPC_UpdateCountdownUI
+  - RPC_UpdateGameTimeUI
+  - RPC_StartCountdown
+  - RPC_StartGame
+  - RPC_SyncCountdown
+  - RPC_UpdateCountdown
+  - RPC_PlayerFinished
+  - RPC_SyncFinishedState
+  - RPC_SyncGameState
+  - RPC_LoadNextLevel
+  - RPC_SyncCompletedState
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

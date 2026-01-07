@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAnimatorDriver animDriver;         // 不填会自动在子物体里找
 
     [Header("Move")]
+    private bool canMove = false;
     public float moveSpeed = 4.0f;
     public float sprintSpeed = 6.5f;
     public bool allowSprint = true;
@@ -105,6 +106,26 @@ public class PlayerController : MonoBehaviour
     {
         if (!isLocal) return;
 
+        if (other.CompareTag("Finish"))
+        {
+            // 到达终点，通知LevelManager
+            PhotonView playerPhotonView = other.GetComponent<PhotonView>();
+            LevelManager levelManager = FindObjectOfType<LevelManager>();
+            if (levelManager != null)
+            {
+                canMove = false; // 禁止移动
+
+                // 通过RPC通知所有客户端该玩家完成
+                PhotonView levelManagerPV = levelManager.GetComponent<PhotonView>();
+                if (levelManagerPV != null)
+                {
+                    levelManagerPV.RPC("RPC_PlayerFinished", RpcTarget.All,
+                        PhotonNetwork.LocalPlayer.ActorNumber,
+                        levelManager.gameTime);
+                }
+            }
+        }
+
         if (other.CompareTag("Ladder"))
         {
             Debug.Log("Entered Ladder Trigger");
@@ -138,10 +159,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    [PunRPC]
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    [PunRPC]
+    public void DisableMovement()
+    {
+        canMove = false;
+    }
+
     void Update()
     {
         if (!isLocal) return;
         if (cam == null) return;
+        if (!canMove) return;
 
         // ====== Climbing Logic (提前处理) ======
         HandleClimbing();
