@@ -52,7 +52,10 @@ public class PlayerController : MonoBehaviour
     [Header("Climbing")]
     public bool isClimbing = false;
     private float climbSpeed = 2.0f;
-    public KeyCode climbExitKey = KeyCode.LeftControl; // 退出梯子按键
+    public KeyCode climbExitKey = KeyCode.LeftControl; // 退出梯子按键（可保留）
+    public KeyCode climbJumpKey = KeyCode.Space;       // ✅ 空格脱离梯子
+    public float climbExitPush = 0.6f;                 // ✅ 脱离时推开距离，防止立刻又进梯子
+    public float climbExitUp = 0.3f;                   // ✅ 脱离时给一点上抬（可设0）
     private Ladder currentLadder;
     private bool canClimb = false;
     private Vector3 ladderTopPosition;
@@ -248,11 +251,26 @@ public class PlayerController : MonoBehaviour
     {
         if (!isClimbing) return;
 
+        // ✅ 空格 / Ctrl 退出梯子
+        if (Input.GetKeyDown(climbJumpKey) || Input.GetKeyDown(climbExitKey))
+        {
+            // 先退出 climbing 状态并恢复 CC
+            StopClimbing();
+
+            // 推开梯子触发器：沿角色面朝方向推一下 + 稍微上抬
+            Vector3 pushDir = rotateRoot != null ? rotateRoot.forward : transform.forward;
+            pushDir.y = 0f;
+            if (pushDir.sqrMagnitude < 0.0001f) pushDir = transform.forward;
+            pushDir.Normalize();
+
+            // 直接改 transform（你现在爬梯子阶段本来也在直接改 transform）
+            transform.position += pushDir * climbExitPush + Vector3.up * climbExitUp;
+
+            return;
+        }
+
         float v = Input.GetAxisRaw("Vertical");
-        float h = Input.GetAxisRaw("Horizontal");
-
         Vector3 move = Vector3.up * v * climbSpeed * Time.deltaTime;
-
         transform.position += move;
 
         // 到达顶部
@@ -264,11 +282,13 @@ public class PlayerController : MonoBehaviour
                 transform.position.z
             );
             StopClimbing();
+            return;
         }
 
         if (animDriver != null)
             animDriver.SetClimbingSpeed(Mathf.Abs(v));
     }
+
 
     void StartClimbing()
     {
@@ -295,8 +315,24 @@ public class PlayerController : MonoBehaviour
         {
             if (currentLadder.startPos != null)
             {
-                transform.position = currentLadder.startPos.position;
-                transform.rotation = currentLadder.startPos.rotation;
+                if (currentLadder != null)
+                {
+                    Transform chosen = currentLadder.startPos;
+
+                    if (currentLadder.startPos != null && currentLadder.endPos != null)
+                    {
+                        float dyStart = Mathf.Abs(transform.position.y - currentLadder.startPos.position.y);
+                        float dyEnd = Mathf.Abs(transform.position.y - currentLadder.endPos.position.y);
+                        chosen = (dyEnd < dyStart) ? currentLadder.endPos : currentLadder.startPos;
+                    }
+
+                    if (chosen != null)
+                    {
+                        transform.position = chosen.position;
+                        transform.rotation = chosen.rotation;
+                    }
+                }
+
             }
         }
 

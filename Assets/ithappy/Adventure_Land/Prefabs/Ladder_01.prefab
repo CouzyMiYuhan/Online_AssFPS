@@ -253,6 +253,7 @@ MonoBehaviour:
   topPoint: {fileID: 5040919949896039156}
   bottomPoint: {fileID: 7724113361622968663}
   startPos: {fileID: 175917300731256594}
+  startPosNew: {fileID: 0}
   endPos: {fileID: 2205821564088222498}
 --- !u!65 &4728469996896984434
 BoxCollider:

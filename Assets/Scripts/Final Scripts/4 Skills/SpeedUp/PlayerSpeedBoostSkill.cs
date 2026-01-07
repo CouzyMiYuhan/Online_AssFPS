@@ -2,10 +2,13 @@ using Photon.Pun;
 using UnityEngine;
 using System.Collections;
 
-public class PlayerSpeedBoostSkill : MonoBehaviourPun
+public class PlayerSpeedBoostSkill : MonoBehaviourPun, ISkillCooldownReadable
 {
     [Header("Input")]
     public KeyCode castKey = KeyCode.E;
+
+    [Header("UI")]
+    public Sprite skillIcon;
 
     [Header("Refs")]
     public PlayerController controller;   // 不填会自动找
@@ -17,7 +20,7 @@ public class PlayerSpeedBoostSkill : MonoBehaviourPun
 
     [Header("Trail VFX (Prefab, 不需要PhotonView)")]
     public GameObject trailVfxPrefab;
-    public Transform vfxAttach;           // 拖尾挂点（不填就挂在 rotateRoot 或 transform）
+    public Transform vfxAttach;
     public Vector3 vfxLocalPos = new Vector3(0f, 0.9f, -0.6f);
     public Vector3 vfxLocalEuler = Vector3.zero;
 
@@ -28,11 +31,16 @@ public class PlayerSpeedBoostSkill : MonoBehaviourPun
     private float _baseSprintSpeed;
     private bool _cachedBase = false;
 
+    // ====== ISkillCooldownReadable ======
+    public float CooldownDuration => cooldown;
+    public float CooldownRemaining => Mathf.Max(0f, _nextReadyTime - Time.time);
+    public bool IsReady => Time.time >= _nextReadyTime;
+    public Sprite Icon => skillIcon;
+
     private void Awake()
     {
         if (controller == null) controller = GetComponent<PlayerController>();
         if (controller == null) controller = GetComponentInParent<PlayerController>();
-
         CacheBaseIfNeeded();
     }
 
@@ -40,10 +48,13 @@ public class PlayerSpeedBoostSkill : MonoBehaviourPun
     {
         if (!photonView.IsMine) return;
 
-        if (Input.GetKeyDown(castKey) && Time.time >= _nextReadyTime)
+        if (Input.GetKeyDown(castKey) && IsReady)
         {
             _nextReadyTime = Time.time + cooldown;
+
+            // 技能动画（同步）
             GetComponent<PlayerSkillCastAnimator>()?.PlayCast();
+
             if (_co != null) StopCoroutine(_co);
             _co = StartCoroutine(CoBoost());
         }

@@ -6507,6 +6507,9 @@ MonoBehaviour:
   attackMouseButton: 0
   isClimbing: 0
   climbExitKey: 306
+  climbJumpKey: 32
+  climbExitPush: 0.6
+  climbExitUp: 0.3
 --- !u!114 &3459380166480602114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6778,6 +6781,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: CastSkill
+  - Type: 4
+    SynchronizeType: 0
+    Name: Climb
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -6953,6 +6959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castKey: 101
+  skillIcon: {fileID: 21300000, guid: d463fa86a0489e64f9effd9eae3ed8dc, type: 3}
   orbPrefabName: Sand Shield
   castOrigin: {fileID: 3666043748959158249}
   spawnForward: 1.2

@@ -6955,6 +6955,11 @@ MonoBehaviour:
   jumpBuffer: 0.1
   allowAttack: 0
   attackMouseButton: 0
+  isClimbing: 0
+  climbExitKey: 306
+  climbJumpKey: 32
+  climbExitPush: 0.6
+  climbExitUp: 0.3
 --- !u!82 &-7765998189800409162
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7136,6 +7141,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: CastSkill
+  - Type: 4
+    SynchronizeType: 1
+    Name: Climb
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -7194,6 +7202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castKey: 101
+  skillIcon: {fileID: 21300000, guid: 75f946fadafeb1045a33e7c8b4615031, type: 3}
   tornadoPrefabName: Fire Tornado
   castOrigin: {fileID: 0}
   spawnForward: 1.2

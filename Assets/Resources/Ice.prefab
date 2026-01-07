@@ -2518,6 +2518,11 @@ MonoBehaviour:
   jumpBuffer: 0.1
   allowAttack: 0
   attackMouseButton: 0
+  isClimbing: 0
+  climbExitKey: 306
+  climbJumpKey: 32
+  climbExitPush: 0.6
+  climbExitUp: 0.3
 --- !u!82 &-2969216319335405873
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2699,6 +2704,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: CastSkill
+  - Type: 4
+    SynchronizeType: 1
+    Name: Climb
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -2789,6 +2797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castKey: 101
+  skillIcon: {fileID: 21300000, guid: 83139e3ca904b6e47908920be6c59582, type: 3}
   freezeProjectilePrefab: Ice Projectile
   castOrigin: {fileID: 0}
   spawnForward: 1.1
