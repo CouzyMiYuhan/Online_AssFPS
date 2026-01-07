@@ -129,7 +129,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel("Level 1");
+            PhotonNetwork.LoadLevel("CharacterSelect");
         }
     }
     #endregion

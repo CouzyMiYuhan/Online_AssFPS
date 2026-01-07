@@ -1,13 +1,12 @@
-using Photon.Pun;
+ï»¿using Photon.Pun;
 using UnityEngine;
 using ExitGames.Client.Photon;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    // ºóÃæ±ðµÄ½Å±¾/ UI ÏëÖªµÀÍæ¼ÒÑ¡ÁËÄÄ¸ö½ÇÉ«£¬¿ÉÒÔ¶ÁÕâ¸ö Key
     public const string PROP_ROLE = "role";
 
-    [Header("4¸ö½ÇÉ«PrefabÃû×Ö£¨±ØÐëÔÚ Assets/Resources/ ÏÂ£¬Ãû×ÖÍêÈ«Ò»ÖÂ£©")]
+    [Header("4ä¸ªè§’è‰²Prefabåå­—ï¼ˆå¿…é¡»åœ¨ Resources ä¸‹ï¼Œåå­—ä¸€è‡´ï¼‰")]
     public string[] playerPrefabNames = new string[4]
     {
         "PlayerNetworkPrefab_0",
@@ -16,26 +15,35 @@ public class PlayerSpawner : MonoBehaviour
         "PlayerNetworkPrefab_3",
     };
 
-    [Header("Spawn Points£¨¿É²»Ìî£¬²»Ìî¾Í(0,0,0)£©")]
+    [Header("Spawn Pointsï¼ˆå¯ä¸å¡«ï¼Œä¸å¡«å°±(0,0,0)ï¼‰")]
     public Transform[] spawnPoints;
 
     private void Start()
     {
         if (!PhotonNetwork.InRoom) return;
 
-        // ½øÈëË³Ðò£º1,2,3,4...
         int actor = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        // ×Ô¶¯Ñ¡½ÇÉ«£¨0~3£©
-        int roleIndex = (actor - 1) % playerPrefabNames.Length;
+        // âœ… ä¼˜å…ˆè¯»çŽ©å®¶å·²é€‰è§’è‰²
+        int roleIndex = -1;
+        if (PhotonNetwork.LocalPlayer.CustomProperties != null &&
+            PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(PROP_ROLE, out object v) &&
+            v is int idx && idx >= 0 && idx < playerPrefabNames.Length)
+        {
+            roleIndex = idx;
+        }
+        else
+        {
+            // å…œåº•ï¼šæ²¡é€‰å°±æŒ‰actoråˆ†é…
+            roleIndex = (actor - 1) % playerPrefabNames.Length;
+
+            PhotonNetwork.LocalPlayer.SetCustomProperties(
+                new Hashtable { { PROP_ROLE, roleIndex } }
+            );
+        }
+
         string prefabName = playerPrefabNames[roleIndex];
 
-        // ¼ÇÂ¼µ½Íæ¼ÒÊôÐÔ£¨·½±ãºóÃæ×ö½ÇÉ«Ñ¡ÔñUI£©
-        PhotonNetwork.LocalPlayer.SetCustomProperties(
-            new Hashtable { { PROP_ROLE, roleIndex } }
-        );
-
-        // ÓÃ actorNumber ¾ö¶¨³öÉúµã£¬±ÜÃâËæ»úµ¼ÖÂÁ½¸öÈË³öÉúÍ¬Ò»¸öµã
         int spIndex = (spawnPoints != null && spawnPoints.Length > 0)
             ? (actor - 1) % spawnPoints.Length
             : -1;
